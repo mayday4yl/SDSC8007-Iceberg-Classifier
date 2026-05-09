@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>final_report</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="multimodal-radar-image-iceberg-classification">Multimodal Radar
+Image Iceberg Classification</h1>
+<p><strong>Course:</strong> SDSC/8007 Deep Learning Mini Project<br />
+<strong>Competition:</strong> Statoil/C-CORE Iceberg Classifier
+Challenge<br />
+<strong>Selected Topic:</strong> Intermediate Task 3, Multimodal Radar
+Image Iceberg Classification<br />
+<strong>Team Members:</strong> Yang Lin 72540214; Duan Yixuan
+72542270<br />
+<strong>Final Submission File:</strong>
+<code>submission_blend_8models_20260503_212025.csv</code></p>
+<h2 id="abstract">Abstract</h2>
+<p>This project reproduces and improves the Kaggle
+<strong>Statoil/C-CORE Iceberg Classifier Challenge</strong>, a binary
+classification task that predicts whether an object in satellite radar
+imagery is an iceberg or a ship. Each sample contains two Synthetic
+Aperture Radar (SAR) image bands and an incidence-angle feature, making
+the task a multimodal classification problem.</p>
+<p>We implemented a complete deep learning pipeline following the course
+requirements: data analysis, leakage-aware validation, baseline
+construction, CNN model training, model improvement, final result
+analysis, AI usage disclosure, and reproducibility packaging. Starting
+from a shallow engineered-feature baseline, we progressively added SAR
+image CNNs, pseudo-label filtering, pretrained FiLM ResNet34,
+incidence-angle statistical features, and strict second-stage
+stacking.</p>
+<p>Our final model is a <strong>strict angle-aware stacking
+ensemble</strong>. The first stage trains multiple CNN image models with
+5-fold cross-validation. The second stage combines their out-of-fold
+predictions with incidence-angle statistical features using LightGBM and
+Logistic Regression. To reduce validation leakage, when predicting each
+validation fold, the true labels of that fold are excluded from
+label-based incidence-angle statistics.</p>
+<p>The final Kaggle late-submission file
+<code>submission_blend_8models_20260503_212025.csv</code> achieved a
+private score of <code>0.08098</code> and a public score of
+<code>0.09987</code>. The corresponding local strict 5-fold CV log loss
+is <code>0.088556</code>, below the Top-5-level reference value
+<code>0.08883</code> used in our project comparison.</p>
+<h2 id="task-description-metric">1. Task Description &amp; Metric</h2>
+<p>The selected competition is the <strong>Statoil/C-CORE Iceberg
+Classifier Challenge</strong>. The goal is to classify objects in
+satellite SAR images as either iceberg or ship. Each sample
+contains:</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>band_1</code></td>
+<td>First SAR image band, flattened from a <code>75 x 75</code>
+image</td>
+</tr>
+<tr class="even">
+<td><code>band_2</code></td>
+<td>Second SAR image band, also flattened from a <code>75 x 75</code>
+image</td>
+</tr>
+<tr class="odd">
+<td><code>inc_angle</code></td>
+<td>Radar incidence angle, provided as a numerical metadata feature</td>
+</tr>
+<tr class="even">
+<td><code>is_iceberg</code></td>
+<td>Binary target label; 1 indicates iceberg and 0 indicates ship</td>
+</tr>
+</tbody>
+</table>
+<p>This is a binary classification task with multimodal inputs. It is
+more challenging than standard natural-image classification because SAR
+images represent radar backscatter rather than RGB color and texture.
+The task matches the course’s Intermediate Task 3, which emphasizes
+non-natural images, multimodal fusion, and noise/robustness
+analysis.</p>
+<p>The official evaluation metric is <strong>binary log
+loss</strong>:</p>
+<pre class="text"><code>LogLoss = -1/N * sum_i [ y_i log(p_i) + (1-y_i) log(1-p_i) ]</code></pre>
+<p>where <code>y_i</code> is the true label and <code>p_i</code> is the
+predicted probability that the sample is an iceberg. Lower log loss is
+better. Since log loss heavily penalizes overconfident wrong
+predictions, the model must output calibrated probabilities rather than
+only correct class labels.</p>
+<p>Kaggle late submission is available for this competition. We
+therefore report the official Kaggle public/private scores for the final
+submission, while also reporting a strict 5-fold CV score to document
+the validation protocol and reproducibility.</p>
+<h2 id="data-analysis-challenges">2. Data Analysis &amp; Challenges</h2>
+<p>The training set contains <code>1604</code> labeled samples, and the
+test set contains <code>8424</code> samples. Each sample has two SAR
+bands of size <code>75 x 75</code>. There are <code>133</code> missing
+incidence-angle values in the training set and no missing
+incidence-angle values in the test set.</p>
+<p>Our cache-building script reports:</p>
+<pre class="text"><code>train images: (1604, 2, 75, 75), labels: (1604,)
+test images:  (8424, 2, 75, 75)
+train missing incidence angles: 133
+test missing incidence angles: 0
+test real-like inc_angle decimals &lt;= 4: 3424
+test synthetic-like inc_angle decimals &gt; 4: 5000</code></pre>
+<p>The main challenges are:</p>
+<ol type="1">
+<li><p><strong>Non-natural SAR imagery.</strong> SAR images measure
+radar backscatter rather than visible-light appearance. They contain
+speckle-like noise and have very different statistics from standard RGB
+images.</p></li>
+<li><p><strong>Small training set.</strong> Only 1604 labeled samples
+are available, so deep CNNs can overfit easily without careful
+validation, regularization, data augmentation, and ensembling.</p></li>
+<li><p><strong>Multimodal structure.</strong> The target depends on both
+image morphology and incidence angle. The incidence angle affects radar
+reflection and also contains strong dataset-level statistical
+patterns.</p></li>
+<li><p><strong>Machine-generated test rows.</strong> Public discussions
+reported that the test set contains generated rows. We preserved the raw
+<code>inc_angle</code> string and computed its decimal precision. In our
+audit, <code>3424</code> test rows have
+<code>angle_decimals &lt;= 4</code>, while <code>5000</code> rows have
+<code>angle_decimals &gt; 4</code>. This information is used as a
+filtering signal for pseudo-labeling and angle-neighborhood
+statistics.</p></li>
+<li><p><strong>Public/private instability.</strong> The public
+leaderboard uses only part of the test labels. For this competition,
+public and private scores can differ noticeably, so we treat the private
+score as the main Kaggle evidence and use strict CV as a reproducibility
+check.</p></li>
+</ol>
+<h2 id="validation-strategy">3. Validation Strategy</h2>
+<p>We use a two-layer validation strategy: first-stage validation for
+CNN image models and second-stage validation for angle-aware
+stacking.</p>
+<h3 id="first-stage-cnn-validation">3.1 First-stage CNN validation</h3>
+<p>All first-stage CNN models are trained using stratified 5-fold
+cross-validation:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Setting</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Number of folds</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td>Shuffle</td>
+<td>True</td>
+</tr>
+<tr class="odd">
+<td>Random seed</td>
+<td>2026</td>
+</tr>
+<tr class="even">
+<td>Split strategy</td>
+<td>Stratified by <code>is_iceberg</code></td>
+</tr>
+<tr class="odd">
+<td>Metric</td>
+<td>Binary log loss</td>
+</tr>
+</tbody>
+</table>
+<p>For each fold, image normalization and incidence-angle normalization
+are fitted only on the training portion of that fold, then applied to
+the validation portion and test set. This prevents validation statistics
+from entering the training process.</p>
+<h3 id="strict-second-stage-stacking-validation">3.2 Strict second-stage
+stacking validation</h3>
+<p>The second stage uses first-stage out-of-fold predictions and
+incidence-angle-derived statistical features. The central
+leakage-control rule is:</p>
+<blockquote>
+<p>When predicting a validation fold, the true labels of that validation
+fold are not used to construct label-based incidence-angle statistics
+for that fold.</p>
+</blockquote>
+<p>For example, when fold 0 is used as validation, statistics such as
+the iceberg rate of samples with the same or nearby incidence angle are
+computed only from folds 1-4. The model can use unlabeled
+<code>inc_angle</code> values from train and test as input metadata, but
+it cannot use validation-fold labels when constructing label-based
+features.</p>
+<h3 id="leakage-control-summary">3.3 Leakage-control summary</h3>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Potential risk</th>
+<th>Control measure</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Image normalization fitted with validation statistics</td>
+<td>Fit normalization only on the training split of each fold</td>
+</tr>
+<tr class="even">
+<td>Incidence-angle scaler fitted with validation statistics</td>
+<td>Fit the angle scaler only on the training split</td>
+</tr>
+<tr class="odd">
+<td>Label-based angle statistics leaking validation labels</td>
+<td>Exclude the current validation fold’s labels in strict stacking</td>
+</tr>
+<tr class="even">
+<td>Pseudo-label noise from synthetic-like test rows</td>
+<td>Use only high-confidence pseudo labels and filter by raw
+<code>inc_angle</code> decimal precision</td>
+</tr>
+<tr class="odd">
+<td>Overconfident probabilities under log loss</td>
+<td>Clip final probabilities and optimize blend weights on out-of-fold
+predictions</td>
+</tr>
+</tbody>
+</table>
+<p>Base C uses pseudo-labeling. It does not use any test-set true
+labels, but it does use unlabeled test inputs and teacher-model
+predictions. We therefore disclose it as a semi-supervised /
+transductive training strategy.</p>
+<h2 id="baseline-model">4. Baseline Model</h2>
+<p>The baseline model is designed to be simple, reproducible, and
+interpretable. We compute image statistics for each SAR channel,
+including mean, standard deviation, minimum, maximum, and percentile
+values. These features are combined with <code>inc_angle</code> and a
+missing-angle indicator, then trained using Logistic Regression and
+ExtraTrees. Their out-of-fold predictions are blended.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Model</th>
+<th>Validation setup</th>
+<th style="text-align: right;">Log loss</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Logistic Regression + ExtraTrees blend</td>
+<td>5-fold CV</td>
+<td style="text-align: right;">0.3403</td>
+</tr>
+</tbody>
+</table>
+<p>This baseline verifies that data loading, label alignment, fold
+splitting, and log-loss computation are correct. It also shows that
+global image statistics alone are not sufficient for Top-5-level
+performance.</p>
+<h2 id="model-improvements">5. Model Improvements</h2>
+<h3 id="sar-image-channel-construction">5.1 SAR image channel
+construction</h3>
+<p>The original input contains two SAR image bands. We construct a
+4-channel dB-space input:</p>
+<pre class="text"><code>channel 1 = band_1
+channel 2 = band_2
+channel 3 = (band_1 + band_2) / 2
+channel 4 = band_1 - band_2</code></pre>
+<p>The first two channels preserve the raw SAR bands, the third channel
+represents average radar intensity, and the fourth channel captures
+polarization contrast. Channel-wise normalization is computed within
+each fold using only the training split.</p>
+<h3 id="first-stage-image-models">5.2 First-stage image models</h3>
+<p>We train four first-stage model families:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Model</th>
+<th>Method</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Base A</td>
+<td>Compact residual-style CNN with 4-channel dB input and an angle
+auxiliary branch</td>
+<td>Stable image baseline</td>
+</tr>
+<tr class="even">
+<td>Base B</td>
+<td>VGG-style CNN with batch normalization and dropout</td>
+<td>Architectural diversity</td>
+</tr>
+<tr class="odd">
+<td>Base C</td>
+<td>CNN trained with filtered high-confidence pseudo labels from Base
+A</td>
+<td>Semi-supervised signal expansion</td>
+</tr>
+<tr class="even">
+<td>Base D</td>
+<td>ImageNet-pretrained ResNet34 with FiLM angle modulation</td>
+<td>Pretrained representation and physical angle conditioning</td>
+</tr>
+</tbody>
+</table>
+<p>All models use rotations, flips, small Gaussian noise, early
+stopping, and test-time augmentation. The purpose of the first stage is
+not to make one CNN solve the task alone, but to generate diverse and
+stable out-of-fold predictions for the second-stage model.</p>
+<h3 id="pretrained-model-usage">5.3 Pretrained model usage</h3>
+<p>Base D uses the official PyTorch ResNet34 ImageNet checkpoint:</p>
+<pre class="text"><code>https://download.pytorch.org/models/resnet34-b627a593.pth</code></pre>
+<p>ResNet34 has approximately 21-22 million parameters, which is far
+below the course limit of 0.5B parameters. Since SAR inputs are not RGB
+images, the first convolution is modified from 3 input channels to 4
+input channels. The first three channels are initialized from the
+pretrained RGB weights, while the fourth channel is initialized by
+averaging the RGB weights. We then add a FiLM module that uses
+<code>inc_angle</code> to generate feature-wise scale and shift
+parameters for the CNN feature map.</p>
+<h3 id="incidence-angle-statistical-features-and-stacking">5.4
+Incidence-angle statistical features and stacking</h3>
+<p>Public top-solution discussions show that <code>inc_angle</code>
+contains strong group and neighborhood patterns. We do not copy public
+notebooks. Instead, we reimplement the idea with a stricter validation
+rule that excludes validation-fold labels.</p>
+<p>The second-stage feature set includes:</p>
+<ul>
+<li>predictions from the four first-stage CNN models;</li>
+<li>mean, median, minimum, maximum, range, and standard deviation of CNN
+predictions;</li>
+<li>raw <code>inc_angle</code> value;</li>
+<li>missing-angle indicator;</li>
+<li>raw JSON decimal precision of <code>inc_angle</code>;</li>
+<li>prediction statistics for identical or rounded incidence
+angles;</li>
+<li>KNN neighborhood statistics in incidence-angle space;</li>
+<li>radius-neighborhood statistics in incidence-angle space;</li>
+<li>label-based angle statistics computed under the strict fold
+rule.</li>
+</ul>
+<p>The second-stage ensemble contains:</p>
+<pre class="text"><code>4 LightGBM stacking models, seeds = 2026, 2027, 2028, 2029
+4 Logistic Regression stacking models, seeds = 2026, 2027, 2028, 2029</code></pre>
+<p>Their out-of-fold predictions are combined using non-negative weight
+optimization. The final model is an 8-model strict stacking blend.</p>
+<h3 id="improvement-summary">5.5 Improvement summary</h3>
+<table>
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 30%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Stage</th>
+<th>Main method</th>
+<th style="text-align: right;">Log loss</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Baseline</td>
+<td>Image statistics + <code>inc_angle</code> + traditional models</td>
+<td style="text-align: right;">0.3403</td>
+</tr>
+<tr class="even">
+<td>CNN/image ensemble</td>
+<td>Multiple CNN image models</td>
+<td style="text-align: right;">0.1788</td>
+</tr>
+<tr class="odd">
+<td>Strict angle-aware stacking</td>
+<td>CNN predictions + strict <code>inc_angle</code> statistics +
+LightGBM/LogReg blend</td>
+<td style="text-align: right;">0.088556</td>
+</tr>
+</tbody>
+</table>
+<p>The CNN ensemble significantly improves over the shallow baseline.
+The largest final gain comes from explicitly modeling incidence-angle
+structure after obtaining stable image-based predictions.</p>
+<h2 id="final-results">6. Final Results</h2>
+<h3 id="local-strict-cv-result">6.1 Local strict CV result</h3>
+<p>The final strict 8-model blend achieves:</p>
+<pre class="text"><code>Strict 5-fold CV log loss = 0.088556</code></pre>
+<p>This is below the Top-5-level reference value <code>0.08883</code>
+used in our project comparison.</p>
+<h3 id="kaggle-late-submission-result">6.2 Kaggle late-submission
+result</h3>
+<p>The final main submission file is:</p>
+<pre class="text"><code>submission_blend_8models_20260503_212025.csv</code></pre>
+<p>Kaggle late-submission scores:</p>
+<table>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 36%" />
+<col style="width: 36%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Submission</th>
+<th style="text-align: right;">Private Score</th>
+<th style="text-align: right;">Public Score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>submission_blend_8models_20260503_212025.csv</code></td>
+<td style="text-align: right;"><strong>0.08098</strong></td>
+<td style="text-align: right;">0.09987</td>
+</tr>
+</tbody>
+</table>
+<p>Because public/private instability is substantial in this
+competition, the private score is the main Kaggle evidence. We do not
+claim an official current Top-5 leaderboard rank unless the leaderboard
+page explicitly shows it. Instead, we state that the achieved log loss
+reaches the course Top-5-level performance target.</p>
+<h2 id="ai-tool-usage-statement">7. AI Tool Usage Statement</h2>
+<p>AI tools were used as assistants, but not to directly generate and
+submit a complete solution. The usage was limited to:</p>
+<ol type="1">
+<li><strong>Debugging and error diagnosis.</strong> AI helped diagnose
+Python, PyTorch, CUDA/GPU, dependency, server-path, and shell-script
+errors.</li>
+<li><strong>Technical explanation and idea discussion.</strong> AI
+helped explain public discussion ideas such as incidence-angle
+statistics, stacking, pseudo-labeling, and FiLM, and helped analyze
+their applicability and leakage risks.</li>
+<li><strong>Code review and reproducibility checks.</strong> AI helped
+inspect the cross-validation protocol, pseudo-label filtering,
+second-stage stacking, README, and one-command reproduction script.</li>
+<li><strong>Report organization and language polishing.</strong> AI
+helped organize the report and polish the wording, while all reported
+experimental results, Kaggle scores, method choices, and limitations
+were checked by the group.</li>
+</ol>
+<p>We did not directly copy or lightly modify public Kaggle notebooks,
+and we did not submit a complete AI-generated implementation. Public
+discussions were used only as references for general modeling ideas. The
+group reimplemented the data pipeline, model training, cross-validation,
+strict stacking, final blending, and reproduction scripts for this
+project.</p>
+<p>Core designs independently confirmed by the group include:</p>
+<ul>
+<li>binary log-loss evaluation and 5-fold CV setup;</li>
+<li>SAR channel construction and fold-safe normalization;</li>
+<li>first-stage CNN training configuration;</li>
+<li>strict angle-aware stacking with validation-fold label
+exclusion;</li>
+<li>filtered pseudo-labeling and its semi-supervised / transductive
+nature;</li>
+<li>source, parameter count, and structure of pretrained ResNet34 +
+FiLM;</li>
+<li>final Kaggle late submission and reproduction workflow.</li>
+</ul>
+<h2 id="discussion-reflection">8. Discussion &amp; Reflection</h2>
+<p>The experiments show that training a deeper CNN alone is not
+sufficient for this task. The shallow baseline obtains
+<code>0.3403</code> log loss. CNN image models improve the result to
+around <code>0.1788</code>, confirming that SAR image morphology is
+useful. The final major improvement comes from combining image
+predictions with strict incidence-angle statistical features, reducing
+local CV log loss to <code>0.088556</code> and Kaggle private score to
+<code>0.08098</code>.</p>
+<p>Effective components include:</p>
+<ul>
+<li>fold-safe CNN training and test-time augmentation;</li>
+<li>multiple first-stage image models rather than a single CNN;</li>
+<li>explicit incidence-angle group and neighborhood features;</li>
+<li>second-stage validation that excludes current validation-fold
+labels;</li>
+<li>LightGBM and Logistic Regression blending for stable probability
+estimates.</li>
+</ul>
+<p>Limitations remain:</p>
+<ul>
+<li>The incidence-angle pattern is dataset-specific and may not
+generalize to a new radar acquisition process.</li>
+<li>Base C uses test inputs and teacher predictions for pseudo-labeling,
+so it should be disclosed as semi-supervised / transductive
+training.</li>
+<li>Final blend weights are optimized on out-of-fold predictions and may
+contain mild model-selection bias.</li>
+<li>CNN retraining can vary slightly across CUDA/PyTorch environments
+even with fixed seeds.</li>
+</ul>
+<p>Future work could include a no-pseudo-label ablation, systematic SAR
+speckle-noise filtering, nested validation for blend-weight selection,
+and deeper public/private score analysis.</p>
+<h2 id="reproducibility">9. Reproducibility</h2>
+<h3 id="code-package">9.1 Code package</h3>
+<p>The reproduction package is:</p>
+<pre class="text"><code>SDSC8007_Iceberg_Classifier_Repro.zip</code></pre>
+<p>It does not include Kaggle raw data, old experiment outputs, or model
+weights. To reproduce, place the Kaggle files in:</p>
+<pre class="text"><code>data/processed/train.json
+data/processed/test.json
+data/processed/sample_submission.csv</code></pre>
+<h3 id="environment">9.2 Environment</h3>
+<p>The final reproduction environment was:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Item</th>
+<th>Configuration</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>GPU</td>
+<td>NVIDIA GeForce RTX 4090 24GB</td>
+</tr>
+<tr class="even">
+<td>CUDA</td>
+<td>12.8</td>
+</tr>
+<tr class="odd">
+<td>Driver</td>
+<td>570.124.06</td>
+</tr>
+<tr class="even">
+<td>Python</td>
+<td>3.12</td>
+</tr>
+<tr class="odd">
+<td>PyTorch</td>
+<td>2.6.0a0+ecf3bae40a.nv25.01</td>
+</tr>
+<tr class="even">
+<td>Seed</td>
+<td>2026</td>
+</tr>
+</tbody>
+</table>
+<p>Python dependencies are listed in <code>requirements.txt</code>.
+PyTorch and torchvision should be installed using a CUDA-compatible
+build for the target machine.</p>
+<h3 id="one-command-reproduction">9.3 One-command reproduction</h3>
+<p>After placing the Kaggle data files under
+<code>data/processed/</code>, run:</p>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /root/SDSC8007_Iceberg_Classifier_Repro</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> pip install <span class="at">-U</span> pip</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> pip install <span class="at">-r</span> requirements.txt</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="va">PYTHON_BIN</span><span class="op">=</span>python <span class="fu">bash</span> scripts/run_from_scratch.sh</span></code></pre></div>
+<p>The script creates a timestamped output directory:</p>
+<pre class="text"><code>artifacts/from_scratch_&lt;timestamp&gt;/
+  run.log
+  predictions/
+  reports/
+  models/</code></pre>
+<p>Key outputs include:</p>
+<pre class="text"><code>predictions/submission_blend_8models_*.csv
+predictions/oof_blend_8models_*.csv
+reports/metrics_blend_8models_*.json
+run.log</code></pre>
+<p>The final CV score can be recomputed from the OOF file using
+<code>scripts/verify_final_oof.py</code>.</p>
+<h2 id="references">References</h2>
+<ol type="1">
+<li>Kaggle. Statoil/C-CORE Iceberg Classifier Challenge.
+https://www.kaggle.com/competitions/statoil-iceberg-classifier-challenge</li>
+<li>David Austin. 1st Place Solution Overview. Kaggle Discussion 48241.
+https://www.kaggle.com/competitions/statoil-iceberg-classifier-challenge/discussion/48241</li>
+<li>beluga. 2nd Place Solution Overview. Kaggle Discussion 48294.
+https://www.kaggle.com/competitions/statoil-iceberg-classifier-challenge/discussion/48294</li>
+<li>Evgeny Nekrasov. 3rd-Place Solution Overview. Kaggle Discussion
+48207.
+https://www.kaggle.com/competitions/statoil-iceberg-classifier-challenge/discussion/48207</li>
+<li>Andrii Sydorchuk. 4th Place Approach. Kaggle Discussion 48163.
+https://www.kaggle.com/competitions/statoil-iceberg-classifier-challenge/discussion/48163</li>
+<li>Azat Akhtyamov. 6th Place Solution. Kaggle Discussion 48193.
+https://www.kaggle.com/competitions/statoil-iceberg-classifier-challenge/discussion/48193</li>
+<li>PyTorch. ResNet34 ImageNet pretrained weights.
+https://download.pytorch.org/models/resnet34-b627a593.pth</li>
+</ol>
+</body>
+</html>
