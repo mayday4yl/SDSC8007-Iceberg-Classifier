@@ -4,8 +4,6 @@
 **Competition:** Statoil/C-CORE Iceberg Classifier Challenge  
 **Selected Topic:** Intermediate Task 3, Multimodal Radar Image Iceberg Classification  
 **Team Members:** Yang Lin 72540214; Duan Yixuan 72542270  
-**Code Repository:** https://github.com/mayday4yl/SDSC8007-Iceberg-Classifier  
-**Final Submission File:** `submission_blend_8models_20260503_212025.csv`
 
 ## Abstract
 
@@ -15,7 +13,7 @@ We implemented a complete deep learning pipeline following the course requiremen
 
 Our final model is a **strict angle-aware stacking ensemble**. The first stage trains multiple CNN image models with 5-fold cross-validation. The second stage combines their out-of-fold predictions with incidence-angle statistical features using LightGBM and Logistic Regression. To reduce validation leakage, when predicting each validation fold, the true labels of that fold are excluded from label-based incidence-angle statistics.
 
-The final Kaggle late-submission file `submission_blend_8models_20260503_212025.csv` achieved a private score of `0.08098` and a public score of `0.09987`. The corresponding local strict 5-fold CV log loss is `0.088556`, below the Top-5-level reference value `0.08883` used in our project comparison.
+The final Kaggle late submission achieved a private score of `0.08098` and a public score of `0.09987`. The corresponding local strict 5-fold CV log loss is `0.088556`, below the Top-5-level reference value `0.08883` used in our project comparison.
 
 ## Author Contributions
 
