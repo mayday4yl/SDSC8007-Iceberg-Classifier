@@ -13,7 +13,7 @@ We implemented a complete deep learning pipeline following the course requiremen
 
 Our final model is a **strict angle-aware stacking ensemble**. The first stage trains multiple CNN image models with 5-fold cross-validation. The second stage combines their out-of-fold predictions with incidence-angle statistical features using LightGBM and Logistic Regression. To reduce validation leakage, when predicting each validation fold, the true labels of that fold are excluded from label-based incidence-angle statistics.
 
-The final Kaggle late submission achieved a private score of `0.08098` and a public score of `0.09987`. The corresponding local strict 5-fold CV log loss is `0.088556`, below the Top-5-level reference value `0.08883` used in our project comparison.
+The final Kaggle late submission achieved a private score of `0.08098`. The corresponding local strict 5-fold CV log loss is `0.088556`, below the Top-5-level reference value `0.08883` used in our project comparison. We use the private score as the main official Kaggle result because the private leaderboard covers most of the test set and reflects the final standings.
 
 ## Author Contributions
 
@@ -45,7 +45,7 @@ LogLoss = -1/N * sum_i [ y_i log(p_i) + (1-y_i) log(1-p_i) ]
 
 where `y_i` is the true label and `p_i` is the predicted probability that the sample is an iceberg. Lower log loss is better. Since log loss heavily penalizes overconfident wrong predictions, the model must output calibrated probabilities rather than only correct class labels.
 
-Kaggle late submission is available for this competition. We therefore report the official Kaggle public/private scores for the final submission, while also reporting a strict 5-fold CV score to document the validation protocol and reproducibility.
+Kaggle late submission is available for this competition. We therefore report the official Kaggle private score as the main submission result, while also reporting a strict 5-fold CV score to document the validation protocol and reproducibility. The public score is shown only as supplementary information because the public split is smaller and less representative of final standings.
 
 ## 2. Data Analysis & Challenges
 
@@ -215,13 +215,17 @@ The final main submission file is:
 submission_blend_8models_20260503_212025.csv
 ```
 
-Kaggle late-submission scores:
+Kaggle late-submission score:
 
-| Submission | Private Score | Public Score |
-| --- | ---: | ---: |
-| `submission_blend_8models_20260503_212025.csv` | **0.08098** | 0.09987 |
+| Submission | Private Score |
+| --- | ---: |
+| `submission_blend_8models_20260503_212025.csv` | **0.08098** |
 
-Because public/private instability is substantial in this competition, the private score is the main Kaggle evidence. We do not claim an official current Top-5 leaderboard rank unless the leaderboard page explicitly shows it. Instead, we state that the achieved log loss reaches the course Top-5-level performance target.
+![Kaggle private leaderboard Top-5 threshold. The fifth-place private score is 0.08883.](figures/kaggle_private_top5.png)
+
+![Kaggle late-submission record of our final strict model. We use the private score 0.08098 as the main official result; the public score is displayed by Kaggle only as a supplementary split score.](figures/kaggle_final_submission.png)
+
+Because public/private instability is substantial in this competition, the private score is the main Kaggle evidence. We do not claim an official current Top-5 leaderboard rank unless the leaderboard page explicitly shows it. Instead, we state that the achieved private log loss reaches the course Top-5-level performance target.
 
 ## 7. AI Tool Usage Statement
 

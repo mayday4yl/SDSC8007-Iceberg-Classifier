@@ -12,8 +12,8 @@ The competition still supports late submission, so the final project score is re
 
 ```text
 Final submission file:      submission_blend_8models_20260503_212025.csv
-Kaggle private score:       0.08098
-Kaggle public score:        0.09987
+Kaggle private score:       0.08098  (main official score reported)
+Kaggle public score:        0.09987  (shown only as supplementary split score)
 Local strict 5-fold CV:     0.088556
 Top-5-level reference:      0.08883
 ```
