@@ -44,8 +44,8 @@
 \title{\textbf{Multimodal Radar Image Iceberg Classification}\\
 \large SDSC8007 Deep Learning Mini Project}
 \author{
-Yang Lin, 72540214 \\
-Duan Yixuan, 72542270
+Lin YANG, 72540214 \\
+Yixuan DUAN, 72542270
 }
 \date{\today}
 
@@ -74,15 +74,15 @@ The final Kaggle late submission achieved a private score of \textbf{0.08098}. T
 
 \section*{Author Contributions}
 
-Both team members made equal contributions to this mini-project. Yang Lin and Duan Yixuan jointly contributed to task selection, literature and public-solution review, model design, experiment execution, result analysis, presentation preparation, and final report writing. Therefore, we report the contribution breakdown as:
+Both team members made equal contributions to this mini-project. Lin YANG and Yixuan DUAN jointly contributed to task selection, literature and public-solution review, model design, experiment execution, result analysis, presentation preparation, and final report writing. Therefore, we report the contribution breakdown as:
 
 \begin{center}
 \begin{tabular}{lc}
 \toprule
 Member & Contribution \\
 \midrule
-Yang Lin & 50\% \\
-Duan Yixuan & 50\% \\
+Lin YANG & 50\% \\
+Yixuan DUAN & 50\% \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -343,7 +343,7 @@ This is below the Top-5-level reference value 0.08883 used in our project compar
 
 \subsection{Kaggle late-submission result}
 
-The final main submission file is:
+The CSV file uploaded to Kaggle was:
 
 \begin{lstlisting}
 submission_blend_8models_20260503_212025.csv
@@ -491,7 +491,19 @@ reports/metrics_blend_8models_*.json
 run.log
 \end{lstlisting}
 
-The Kaggle submission CSV is a generated output. The file submitted for late submission was named \texttt{submission\_blend\_8models\_20260503\_212025.csv}; the filename itself does not affect Kaggle scoring, but we keep the original name in the report so it matches the Kaggle submission record.
+The exact CSV file uploaded to Kaggle is included in the GitHub repository under:
+
+\begin{lstlisting}
+submissions/submission_blend_8models_20260503_212025.csv
+\end{lstlisting}
+
+Re-running the reproduction script generates a timestamped CSV under:
+
+\begin{lstlisting}
+predictions/submission_blend_8models_*.csv
+\end{lstlisting}
+
+The filename itself does not affect Kaggle scoring, but we keep the original name in the report so it matches the Kaggle submission record.
 
 The final CV score can be recomputed from the generated OOF file using the verification script in the \texttt{scripts} directory.
 

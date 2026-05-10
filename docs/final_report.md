@@ -3,7 +3,7 @@
 **Course:** SDSC/8007 Deep Learning Mini Project  
 **Competition:** Statoil/C-CORE Iceberg Classifier Challenge  
 **Selected Topic:** Intermediate Task 3, Multimodal Radar Image Iceberg Classification  
-**Team Members:** Yang Lin 72540214; Duan Yixuan 72542270  
+**Team Members:** Lin YANG 72540214; Yixuan DUAN 72542270  
 
 ## Abstract
 
@@ -17,12 +17,12 @@ The final Kaggle late submission achieved a private score of `0.08098`. The corr
 
 ## Author Contributions
 
-Both team members made equal contributions to this mini-project. Yang Lin and Duan Yixuan jointly contributed to task selection, literature and public-solution review, model design, experiment execution, result analysis, presentation preparation, and final report writing. Therefore, the contribution breakdown is:
+Both team members made equal contributions to this mini-project. Lin YANG and Yixuan DUAN jointly contributed to task selection, literature and public-solution review, model design, experiment execution, result analysis, presentation preparation, and final report writing. Therefore, the contribution breakdown is:
 
 | Member | Contribution |
 | --- | ---: |
-| Yang Lin | 50% |
-| Duan Yixuan | 50% |
+| Lin YANG | 50% |
+| Yixuan DUAN | 50% |
 
 ## 1. Task Description & Metric
 
@@ -229,7 +229,7 @@ This is below the Top-5-level reference value `0.08883` used in our project comp
 
 ### 6.2 Kaggle late-submission result
 
-The final main submission file is:
+The CSV file uploaded to Kaggle was:
 
 ```text
 submission_blend_8models_20260503_212025.csv
@@ -360,7 +360,7 @@ reports/metrics_blend_8models_*.json
 run.log
 ```
 
-The Kaggle submission CSV is a generated output. The file submitted for late submission was named `submission_blend_8models_20260503_212025.csv`; the filename itself does not affect Kaggle scoring, but we keep the original name in the report so it matches the Kaggle submission record.
+The exact CSV file uploaded to Kaggle is included in the GitHub repository under `submissions/submission_blend_8models_20260503_212025.csv`. Re-running the reproduction script generates a timestamped CSV under `predictions/submission_blend_8models_*.csv`. The filename itself does not affect Kaggle scoring, but we keep the original name in the report so it matches the Kaggle submission record.
 
 The final CV score can be recomputed from the generated OOF file using the verification script in the `scripts` directory.
 
