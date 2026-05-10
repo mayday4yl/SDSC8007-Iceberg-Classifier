@@ -16,6 +16,15 @@ Our final model is a **strict angle-aware stacking ensemble**. The first stage t
 
 The final Kaggle late-submission file `submission_blend_8models_20260503_212025.csv` achieved a private score of `0.08098` and a public score of `0.09987`. The corresponding local strict 5-fold CV log loss is `0.088556`, below the Top-5-level reference value `0.08883` used in our project comparison.
 
+## Author Contributions
+
+Both team members made equal contributions to this mini-project. Yang Lin and Duan Yixuan jointly contributed to task selection, literature and public-solution review, model design, experiment execution, result analysis, presentation preparation, and final report writing. Therefore, the contribution breakdown is:
+
+| Member | Contribution |
+| --- | ---: |
+| Yang Lin | 50% |
+| Duan Yixuan | 50% |
+
 ## 1. Task Description & Metric
 
 The selected competition is the **Statoil/C-CORE Iceberg Classifier Challenge**. The goal is to classify objects in satellite SAR images as either iceberg or ship. Each sample contains:
@@ -320,7 +329,7 @@ reports/metrics_blend_8models_*.json
 run.log
 ```
 
-The final CV score can be recomputed from the OOF file using `scripts/verify_final_oof.py`.
+The final CV score can be recomputed from the generated OOF file using the verification script in the `scripts` directory.
 
 ## References
 

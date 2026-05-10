@@ -18,6 +18,15 @@ Top-5-level reference:      0.08883
 
 The local CV score is used as a reproducibility check. It is computed from out-of-fold predictions using the same binary log loss formula as Kaggle.
 
+## Author Contributions
+
+Both team members made equal contributions to this mini-project.
+
+```text
+Yang Lin:     50%
+Duan Yixuan: 50%
+```
+
 ## Repository Layout
 
 ```text
@@ -25,7 +34,9 @@ README.md
 requirements.txt
 
 data/processed/                 Place Kaggle raw files here
-docs/final_report.md            Final report source
+docs/final_report.tex           Final report LaTeX source
+docs/final_report.pdf           Final report PDF for submission
+docs/final_report.md            Markdown reference copy
 
 src/iceberg/data.py             Data loading, channel construction, folds, pseudo-label filtering
 src/iceberg/models.py           CNN, VGG-style CNN, and FiLM ResNet34 models
