@@ -49,7 +49,7 @@ Kaggle late submission is available for this competition. We therefore report th
 
 ## 2. Data Analysis & Challenges
 
-The training set contains `1604` labeled samples, and the test set contains `8424` samples. Each sample has two SAR bands of size `75 x 75`. There are `133` missing incidence-angle values in the training set and no missing incidence-angle values in the test set.
+The training set contains `1604` labeled samples, and the test set contains `8424` samples. Each sample has two SAR bands of size `75 x 75`. There are `133` missing incidence-angle values in the training set and no missing incidence-angle values in the test set. The training labels are only mildly imbalanced: `851` ship samples and `753` iceberg samples, corresponding to approximately `53.1%` ship and `46.9%` iceberg.
 
 Our cache-building script reports:
 
@@ -159,6 +159,8 @@ https://download.pytorch.org/models/resnet34-b627a593.pth
 ```
 
 ResNet34 has approximately 21-22 million parameters, which is far below the course limit of 0.5B parameters. Since SAR inputs are not RGB images, the first convolution is modified from 3 input channels to 4 input channels. The first three channels are initialized from the pretrained RGB weights, while the fourth channel is initialized by averaging the RGB weights. We then add a FiLM module that uses `inc_angle` to generate feature-wise scale and shift parameters for the CNN feature map.
+
+Ensembling is used in the final system: Base D is one first-stage model family inside the broader 8-model strict stacking blend. No other external pretrained backbones are used.
 
 ### 5.4 Incidence-angle statistical features and stacking
 
@@ -285,7 +287,7 @@ The public GitHub repository for the same code package is:
 https://github.com/mayday4yl/SDSC8007-Iceberg-Classifier
 ```
 
-It does not include Kaggle raw data, old experiment outputs, or model weights. To reproduce, place the Kaggle files in:
+The project is script-based rather than notebook-based, so no separate notebooks are required to reproduce the result. It does not include Kaggle raw data, old experiment outputs, or model weights. To reproduce, place the Kaggle files in:
 
 ```text
 data/processed/train.json
