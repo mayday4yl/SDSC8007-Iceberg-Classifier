@@ -293,21 +293,15 @@ Future work could include a no-pseudo-label ablation, systematic SAR speckle-noi
 
 ## 9. Reproducibility
 
-### 9.1 Code package
+### 9.1 Code repository
 
-The reproduction package is:
-
-```text
-SDSC8007_Iceberg_Classifier_Repro.zip
-```
-
-The public GitHub repository for the same code package is:
+The reproducible code is available in the public GitHub repository:
 
 ```text
 https://github.com/mayday4yl/SDSC8007-Iceberg-Classifier
 ```
 
-The project is script-based rather than notebook-based, so no separate notebooks are required to reproduce the result. It does not include Kaggle raw data, old experiment outputs, or model weights. To reproduce, place the Kaggle files in:
+The project is script-based rather than notebook-based, so no separate notebooks are required to reproduce the result. The repository does not include Kaggle raw data, old experiment outputs, or model weights. To reproduce, place the Kaggle files in:
 
 ```text
 data/processed/train.json
