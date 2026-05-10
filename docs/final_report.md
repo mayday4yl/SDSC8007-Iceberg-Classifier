@@ -166,6 +166,8 @@ Hyperparameter tuning focused on stable validation performance rather than maxim
 | Logistic stacking | StandardScaler + Logistic Regression; `C=0.2`, max iterations `5000`, seeds `2026-2029` |
 | Final blend | Non-negative weights constrained to sum to 1, optimized on out-of-fold predictions using binary log loss |
 
+For readability, these settings can be viewed as two groups. The first group controls CNN training (optimizer, learning rate, batch size, early stopping, dropout, augmentation, and test-time augmentation). The second group controls pseudo-label filtering, LightGBM stacking, Logistic Regression stacking, and final non-negative blending.
+
 ### 5.4 Pretrained model usage
 
 Base D uses the official PyTorch ResNet34 ImageNet checkpoint:
@@ -253,7 +255,7 @@ The usage was limited to:
 
 1. **Debugging and error diagnosis.** AI helped diagnose Python, PyTorch, CUDA/GPU, dependency, server-path, and shell-script errors.
 2. **Technical explanation and idea discussion.** AI helped explain public discussion ideas such as incidence-angle statistics, stacking, pseudo-labeling, and FiLM, and helped analyze their applicability and leakage risks.
-3. **Implementation assistance, code review, and reproducibility checks.** AI helped with selected implementation details and helped inspect the cross-validation protocol, pseudo-label filtering, second-stage stacking, README, and one-command reproduction script.
+3. **Code review and reproducibility checks.** AI helped review selected code snippets and inspect the cross-validation protocol, pseudo-label filtering, second-stage stacking, README, and one-command reproduction script. All core implementation was written, tested, and verified by the group.
 4. **Report organization and language polishing.** AI helped organize the report and polish the wording, while all reported experimental results, Kaggle scores, method choices, and limitations were checked by the group.
 
 We did not directly copy or lightly modify public Kaggle notebooks, and we did not submit results without group verification. Public discussions were used only as references for general modeling ideas. The group reviewed and verified the data pipeline, model training, cross-validation, strict stacking, final blending, reproduction scripts, and reported Kaggle results for this project.
@@ -333,7 +335,7 @@ Python dependencies are listed in `requirements.txt`. PyTorch and torchvision sh
 After placing the Kaggle data files under `data/processed/`, run:
 
 ```bash
-cd /root/SDSC8007_Iceberg_Classifier_Repro
+cd /path/to/SDSC8007_Iceberg_Classifier_Repro
 python -m pip install -U pip
 python -m pip install -r requirements.txt
 PYTHON_BIN=python bash scripts/run_from_scratch.sh
