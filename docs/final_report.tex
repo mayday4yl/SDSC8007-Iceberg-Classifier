@@ -15,7 +15,6 @@
 \usepackage{amsmath}
 \usepackage{listings}
 \usepackage{graphicx}
-\usepackage{float}
 
 \hypersetup{
   colorlinks=true,
@@ -329,20 +328,21 @@ Submission & Private Score \\
 \end{tabular}
 \end{center}
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.84\textwidth]{figures/kaggle_private_top5.png}
-\caption{Kaggle private leaderboard Top-5 threshold. The fifth-place private score is 0.08883.}
-\end{figure}
-
-\vspace{-0.5em}
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.78\textwidth]{figures/kaggle_final_submission.png}
-\caption{Kaggle late-submission record: final private score 0.08098. The public score is shown only as a supplementary split score.}
-\end{figure}
-
 Because public/private instability is substantial in this competition, the private score is the main Kaggle evidence. We do not claim an official current Top-5 leaderboard rank unless the leaderboard page explicitly shows it. Instead, we state that the achieved private log loss reaches the course Top-5-level performance target.
+
+\clearpage
+\noindent\begin{minipage}{\textwidth}
+\centering
+\includegraphics[width=0.82\textwidth]{figures/kaggle_private_top5.png}
+\vspace{0.7em}
+
+\includegraphics[width=0.82\textwidth]{figures/kaggle_final_submission.png}
+\vspace{0.45em}
+
+\refstepcounter{figure}
+\parbox{0.88\textwidth}{\small \textbf{Figure \thefigure:} Kaggle evidence for the final result. Top: private leaderboard Top-5 threshold, where the fifth-place private score is 0.08883. Bottom: our final strict late-submission record, with private score 0.08098. The public score is shown only as a supplementary Kaggle split score.}
+\end{minipage}
+\vspace{1.2em}
 
 \section{AI Tool Usage Statement}
 
