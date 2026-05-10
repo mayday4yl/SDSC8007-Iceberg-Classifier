@@ -150,7 +150,23 @@ We train four first-stage model families:
 
 All models use rotations, flips, small Gaussian noise, early stopping, and test-time augmentation. The purpose of the first stage is not to make one CNN solve the task alone, but to generate diverse and stable out-of-fold predictions for the second-stage model.
 
-### 5.3 Pretrained model usage
+### 5.3 Training settings and hyperparameter tuning
+
+Hyperparameter tuning focused on stable validation performance rather than maximizing training-set fit. The main settings used in the final reproduction script are summarized below.
+
+| Component | Main hyperparameters and tuning choices |
+| --- | --- |
+| Base A / Base C CNN | AdamW optimizer, learning rate `0.001`, weight decay `1e-4`, batch size `64`, epoch limit `120`, early-stopping patience `25`, width `48`, dropout `0.20` |
+| Base B VGG-style CNN | AdamW optimizer, learning rate `0.001`, weight decay `1e-4`, batch size `64`, epoch limit `120`, early-stopping patience `25`, width `48`, dropout `0.30` |
+| Base D FiLM ResNet34 | AdamW optimizer, learning rate `0.0003`, weight decay `1e-4`, batch size `32`, epoch limit `80`, early-stopping patience `15`, dropout `0.30` |
+| Learning schedule and loss | Cosine annealing learning-rate schedule; binary cross-entropy with logits; validation metric is binary log loss |
+| Augmentation and inference | Rotations, flips, small Gaussian noise during training; test-time augmentation for first-stage CNN predictions |
+| Pseudo-label filtering | High-confidence test predictions only: probability `<=0.03` or `>=0.97`, pseudo-label weight `0.35`, with raw `inc_angle` decimal-precision filtering |
+| LightGBM stacking | 4 seeds: `2026-2029`; max depth `3`, `70` estimators, learning rate `0.1`, min child samples `40`, subsample `0.95`, column sample `0.70` |
+| Logistic stacking | StandardScaler + Logistic Regression; `C=0.2`, max iterations `5000`, seeds `2026-2029` |
+| Final blend | Non-negative weights constrained to sum to 1, optimized on out-of-fold predictions using binary log loss |
+
+### 5.4 Pretrained model usage
 
 Base D uses the official PyTorch ResNet34 ImageNet checkpoint:
 
@@ -162,7 +178,7 @@ ResNet34 has approximately 21-22 million parameters, which is far below the cour
 
 Ensembling is used in the final system: Base D is one first-stage model family inside the broader 8-model strict stacking blend. No other external pretrained backbones are used.
 
-### 5.4 Incidence-angle statistical features and stacking
+### 5.5 Incidence-angle statistical features and stacking
 
 Public top-solution discussions show that `inc_angle` contains strong group and neighborhood patterns. We do not copy public notebooks. Instead, we reimplement the idea with a stricter validation rule that excludes validation-fold labels.
 
@@ -187,7 +203,7 @@ The second-stage ensemble contains:
 
 Their out-of-fold predictions are combined using non-negative weight optimization. The final model is an 8-model strict stacking blend.
 
-### 5.5 Improvement summary
+### 5.6 Comparative evidence
 
 | Stage | Main method | Log loss |
 | --- | --- | ---: |
@@ -195,7 +211,7 @@ Their out-of-fold predictions are combined using non-negative weight optimizatio
 | CNN/image ensemble | Multiple CNN image models | 0.1788 |
 | Strict angle-aware stacking | CNN predictions + strict `inc_angle` statistics + LightGBM/LogReg blend | 0.088556 |
 
-The CNN ensemble significantly improves over the shallow baseline. The largest final gain comes from explicitly modeling incidence-angle structure after obtaining stable image-based predictions.
+This is a stage-level ablation. Removing the first-stage CNN image models leaves only the shallow engineered-feature baseline at `0.3403`. Removing the second-stage angle-aware stacking keeps the CNN/image ensemble at `0.1788`. Adding strict incidence-angle statistical features and the LightGBM/LogReg stacking blend reduces the local strict CV log loss to `0.088556`. We did not rerun every possible Base A/B/C/D component-level ablation due to time and GPU constraints; this remains a limitation discussed in Section 8.
 
 ## 6. Final Results
 
@@ -227,18 +243,20 @@ Kaggle late-submission score:
 
 ![Kaggle late-submission record of our final strict model. We use the private score 0.08098 as the main official result; the public score is displayed by Kaggle only as a supplementary split score.](figures/kaggle_final_submission.png)
 
-Because public/private instability is substantial in this competition, the private score is the main Kaggle evidence. We do not claim an official current Top-5 leaderboard rank unless the leaderboard page explicitly shows it. Instead, we state that the achieved private log loss reaches the course Top-5-level performance target.
+Because public/private instability is substantial in this competition, the private score is the main Kaggle evidence. Under the same private leaderboard metric, our late-submission private score of `0.08098` is lower than the fifth-place private score of `0.08883` shown in the leaderboard screenshot. Therefore, although the late submission may not change the historical official ranking, the achieved private score meets the course's Top-5-level performance target.
 
 ## 7. AI Tool Usage Statement
 
-AI tools were used as assistants, but not to directly generate and submit a complete solution. The usage was limited to:
+We used ChatGPT (OpenAI) as the primary AI assistant during this project, and DeepSeek was used occasionally for cross-checking modeling ideas and risk analysis. These tools were used as assistants, not as authoritative sources. They were not used to directly submit an unverified complete solution.
+
+The usage was limited to:
 
 1. **Debugging and error diagnosis.** AI helped diagnose Python, PyTorch, CUDA/GPU, dependency, server-path, and shell-script errors.
 2. **Technical explanation and idea discussion.** AI helped explain public discussion ideas such as incidence-angle statistics, stacking, pseudo-labeling, and FiLM, and helped analyze their applicability and leakage risks.
-3. **Code review and reproducibility checks.** AI helped inspect the cross-validation protocol, pseudo-label filtering, second-stage stacking, README, and one-command reproduction script.
+3. **Implementation assistance, code review, and reproducibility checks.** AI helped with selected implementation details and helped inspect the cross-validation protocol, pseudo-label filtering, second-stage stacking, README, and one-command reproduction script.
 4. **Report organization and language polishing.** AI helped organize the report and polish the wording, while all reported experimental results, Kaggle scores, method choices, and limitations were checked by the group.
 
-We did not directly copy or lightly modify public Kaggle notebooks, and we did not submit a complete AI-generated implementation. Public discussions were used only as references for general modeling ideas. The group reimplemented the data pipeline, model training, cross-validation, strict stacking, final blending, and reproduction scripts for this project.
+We did not directly copy or lightly modify public Kaggle notebooks, and we did not submit results without group verification. Public discussions were used only as references for general modeling ideas. The group reviewed and verified the data pipeline, model training, cross-validation, strict stacking, final blending, reproduction scripts, and reported Kaggle results for this project.
 
 Core designs independently confirmed by the group include:
 
