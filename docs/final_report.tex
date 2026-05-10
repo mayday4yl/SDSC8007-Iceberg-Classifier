@@ -361,21 +361,24 @@ Submission & Private Score \\
 \end{tabular}
 \end{center}
 
-\noindent\begin{minipage}{\textwidth}
-\centering
-\includegraphics[width=0.74\textwidth]{figures/kaggle_private_top5.png}
-\vspace{0.35em}
-
-\includegraphics[width=0.74\textwidth]{figures/kaggle_final_submission.png}
-\vspace{0.25em}
-
-\refstepcounter{figure}
-\parbox{0.82\textwidth}{\small \textbf{Figure \thefigure:} Kaggle evidence. Top: private Top-5 threshold (fifth place = 0.08883). Bottom: our strict late submission (private = 0.08098; public shown as supplementary).}
-\end{minipage}
-\vspace{0.8em}
-
 Because public/private instability is substantial in this competition, the private score is the main Kaggle evidence. Under the same private leaderboard metric, our late-submission private score of 0.08098 is lower than the fifth-place private score of 0.08883 shown in the leaderboard screenshot. Therefore, although the late submission may not change the historical official ranking, the achieved private score meets the course's Top-5-level performance target.
 
+\begin{center}
+\begin{minipage}{\textwidth}
+\centering
+\includegraphics[width=\linewidth]{figures/kaggle_private_top5.png}
+\vspace{0.4em}
+
+\includegraphics[width=\linewidth]{figures/kaggle_final_submission.png}
+\vspace{0.3em}
+
+\refstepcounter{figure}
+\small \textbf{Figure \thefigure:} Kaggle evidence. Top: private Top-5 threshold (fifth place = 0.08883). Bottom: our strict late submission (private = 0.08098; public shown as supplementary).
+\end{minipage}
+\end{center}
+\vspace{0.7em}
+
+\clearpage
 \section{AI Tool Usage Statement}
 
 We used ChatGPT (OpenAI) as the primary AI assistant during this project, and DeepSeek was used occasionally for cross-checking modeling ideas and risk analysis. These tools were used as assistants, not as authoritative sources. They were not used to directly submit an unverified complete solution.
