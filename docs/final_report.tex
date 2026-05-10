@@ -15,6 +15,7 @@
 \usepackage{amsmath}
 \usepackage{listings}
 \usepackage{graphicx}
+\usepackage{float}
 
 \hypersetup{
   colorlinks=true,
@@ -37,6 +38,9 @@
 \setlist[enumerate]{topsep=2pt,itemsep=2pt}
 \renewcommand{\arraystretch}{1.15}
 \Urlmuskip=0mu plus 2mu
+\setlength{\textfloatsep}{8pt plus 2pt minus 2pt}
+\setlength{\floatsep}{8pt plus 2pt minus 2pt}
+\setlength{\intextsep}{8pt plus 2pt minus 2pt}
 
 \title{\textbf{Multimodal Radar Image Iceberg Classification}\\
 \large SDSC8007 Deep Learning Mini Project}
@@ -325,16 +329,17 @@ Submission & Private Score \\
 \end{tabular}
 \end{center}
 
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centering
-\includegraphics[width=0.92\textwidth]{figures/kaggle_private_top5.png}
+\includegraphics[width=0.84\textwidth]{figures/kaggle_private_top5.png}
 \caption{Kaggle private leaderboard Top-5 threshold. The fifth-place private score is 0.08883.}
 \end{figure}
 
-\begin{figure}[htbp]
+\vspace{-0.5em}
+\begin{figure}[H]
 \centering
-\includegraphics[width=0.86\textwidth]{figures/kaggle_final_submission.png}
-\caption{Kaggle late-submission record of our final strict model. We use the private score 0.08098 as the main official result; the public score is displayed by Kaggle only as a supplementary split score.}
+\includegraphics[width=0.78\textwidth]{figures/kaggle_final_submission.png}
+\caption{Kaggle late-submission record: final private score 0.08098. The public score is shown only as a supplementary split score.}
 \end{figure}
 
 Because public/private instability is substantial in this competition, the private score is the main Kaggle evidence. We do not claim an official current Top-5 leaderboard rank unless the leaderboard page explicitly shows it. Instead, we state that the achieved private log loss reaches the course Top-5-level performance target.
