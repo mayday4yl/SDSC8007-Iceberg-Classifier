@@ -49,11 +49,12 @@ Duan Yixuan, 72542270
 \maketitle
 
 \begin{center}
-\begin{tabular}{ll}
+\begin{tabular}{lp{0.62\linewidth}}
 \toprule
 Course & SDSC8007 Deep Learning \\
 Competition & Statoil/C-CORE Iceberg Classifier Challenge \\
 Selected topic & Intermediate Task 3: Multimodal Radar Image Iceberg Classification \\
+Code repository & \url{https://github.com/mayday4yl/SDSC8007-Iceberg-Classifier} \\
 Final submission file & \texttt{submission\_blend\_8models\_20260503\_212025.csv} \\
 \bottomrule
 \end{tabular}
@@ -372,6 +373,12 @@ The reproduction package is:
 SDSC8007_Iceberg_Classifier_Repro.zip
 \end{lstlisting}
 
+The public GitHub repository for the same code package is:
+
+\begin{lstlisting}
+https://github.com/mayday4yl/SDSC8007-Iceberg-Classifier
+\end{lstlisting}
+
 It does not include Kaggle raw data, old experiment outputs, or model weights. To reproduce, place the Kaggle files in:
 
 \begin{lstlisting}
@@ -430,6 +437,8 @@ predictions/oof_blend_8models_*.csv
 reports/metrics_blend_8models_*.json
 run.log
 \end{lstlisting}
+
+The Kaggle submission CSV is a generated output. The file submitted for late submission was named \texttt{submission\_blend\_8models\_20260503\_212025.csv}; the filename itself does not affect Kaggle scoring, but we keep the original name in the report so it matches the Kaggle submission record.
 
 The final CV score can be recomputed from the generated OOF file using the verification script in the \texttt{scripts} directory.
 

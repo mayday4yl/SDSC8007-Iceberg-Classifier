@@ -4,6 +4,8 @@ This repository contains the reproducible code for our SDSC8007 mini project on 
 
 The task is binary classification: given two SAR image bands and the radar incidence angle, predict the probability that a target is an iceberg rather than a ship.
 
+GitHub repository: https://github.com/mayday4yl/SDSC8007-Iceberg-Classifier
+
 ## Final Result
 
 The competition still supports late submission, so the final project score is reported using the official Kaggle binary log loss.
@@ -17,6 +19,8 @@ Top-5-level reference:      0.08883
 ```
 
 The local CV score is used as a reproducibility check. It is computed from out-of-fold predictions using the same binary log loss formula as Kaggle.
+
+The final submission CSV is a generated artifact. It is not stored in the repository by default; running the reproduction script generates `predictions/submission_blend_8models_*.csv`. The file submitted to Kaggle was named `submission_blend_8models_20260503_212025.csv`.
 
 ## Author Contributions
 

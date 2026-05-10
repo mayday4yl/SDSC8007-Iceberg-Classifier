@@ -4,6 +4,7 @@
 **Competition:** Statoil/C-CORE Iceberg Classifier Challenge  
 **Selected Topic:** Intermediate Task 3, Multimodal Radar Image Iceberg Classification  
 **Team Members:** Yang Lin 72540214; Duan Yixuan 72542270  
+**Code Repository:** https://github.com/mayday4yl/SDSC8007-Iceberg-Classifier  
 **Final Submission File:** `submission_blend_8models_20260503_212025.csv`
 
 ## Abstract
@@ -276,6 +277,12 @@ The reproduction package is:
 SDSC8007_Iceberg_Classifier_Repro.zip
 ```
 
+The public GitHub repository for the same code package is:
+
+```text
+https://github.com/mayday4yl/SDSC8007-Iceberg-Classifier
+```
+
 It does not include Kaggle raw data, old experiment outputs, or model weights. To reproduce, place the Kaggle files in:
 
 ```text
@@ -328,6 +335,8 @@ predictions/oof_blend_8models_*.csv
 reports/metrics_blend_8models_*.json
 run.log
 ```
+
+The Kaggle submission CSV is a generated output. The file submitted for late submission was named `submission_blend_8models_20260503_212025.csv`; the filename itself does not affect Kaggle scoring, but we keep the original name in the report so it matches the Kaggle submission record.
 
 The final CV score can be recomputed from the generated OOF file using the verification script in the `scripts` directory.
 
